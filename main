@@ -920,3 +920,55 @@ public class Solution {
         scan.close();
     }
 }
+
+
+
+-------------------------------------------
+
+
+// Java List
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       
+       Scanner sc = new Scanner(System.in);
+       
+       ArrayList<Integer> list = new ArrayList<Integer>();
+       int arrayLength = sc.nextInt();
+       
+     for (int i = 0 ; i < arrayLength; i++){
+           list.add(sc.nextInt());    
+       }
+       
+       int queries = sc.nextInt();
+       
+         for (int i = 0 ; i < queries; i++){
+             sc.nextLine();
+             String command = sc.nextLine();
+           
+           if ("Insert".equals(command)){ 
+               int x = sc.nextInt();
+               int y = sc.nextInt();
+              list.add(x, y);
+               
+           } 
+            if ("Delete".equals(command)){
+                int x = sc.nextInt();
+
+               list.remove(x);
+               
+           }
+       }
+       
+       
+       for (int x : list) {
+           System.out.print(x + " ");
+       }
+         
+       
+    }
+}
