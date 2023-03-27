@@ -327,35 +327,27 @@ public class Solution {
 
 //Tag Content Extractor
 
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
-
-public class Solution{
 	public static void main(String[] args){
-		
-		 String regex = "(<([^>]+)>)+([^<>]+)</\\2>+";
-        
-        Scanner in = new Scanner(System.in);
-        int testCases = Integer.parseInt(in.nextLine());    
-        
-        
-            while(testCases>0){
-                String line = in.nextLine();
-                line = line.trim().replace("\\n", "");
-            
-               Pattern p = Pattern.compile(regex);
-               Matcher m = p.matcher(line);
-                 
-                 if (m.find())
-                System.out.println(m.group(3));
-                else
-                 System.out.println("None");
-            
-            testCases--;
+	 String regex = "<([^<>]+)>([^<>]+)</\\1>";
+      Pattern pattern = Pattern.compile(regex);
+      
+      Scanner in = new Scanner(System.in);
+      int testCases = Integer.parseInt(in.nextLine());
+      
+      while(testCases-->0){
+          
+         String line = in.nextLine();
+         Matcher m = pattern.matcher(line);
+         int count = 0;
+         
+         while (m.find()) {
+             System.out.println(m.group(2));
+             count++;
+         }
+         if (count == 0) {
+         System.out.println("None");
+         
+         }
         }
-		}
-	}
+      }
 
