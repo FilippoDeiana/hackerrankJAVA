@@ -581,4 +581,63 @@ class Solution {
         sc.close();
     }
     }
+    
+    
+    
+    
+    
+    -----------------------------------
+    
+    
+    
+    
+    //Java Dequeue
+    import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+
+        Deque deque = new ArrayDeque<>();
+
+        HashSet set = new HashSet<>();
+
+        int n = in.nextInt();
+
+        int m = in.nextInt();
+
+        int max = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            int num = in.nextInt();
+
+            deque.push(num);
+            set.add(num);
+
+            if (deque.size() == m) {
+                if (set.size() > max) {
+
+                    max = set.size();
+                    int first = (int) deque.removeFirst();
+                    if (!deque.contains(first)) {
+                        System.out.println(deque);
+                        System.out.println(set);
+                        set.remove(first);
+                        System.out.println(set);
+                    }
+
+                }
+
+            }
+
+        }
+
+        System.out.println(max);
+
+    }
+
+}
 
