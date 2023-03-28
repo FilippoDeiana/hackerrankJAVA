@@ -737,9 +737,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.*;
-/*
- * Create the Student and Priorities classes here.
- */
+
+
  
  class Student{
      
@@ -761,7 +760,7 @@ import java.util.*;
          return this.name;
      }
      
-     public double getCpga(){
+     public double getCgpa(){
          return this.cgpa;
      }
  }
@@ -770,10 +769,11 @@ import java.util.*;
      
      public List<Student> getStudents(List<String> events) {
    
-           Comparator<Student> comparator = new Comp();
-           PriorityQueue<Student> list = new PriorityQueue<Student>(comparator);
+               PriorityQueue<Student> list = new PriorityQueue<>(
+                   Comparator.comparingDouble(Student::getCgpa).reversed().thenComparing                                   (Student::getName).thenComparingInt(Student::getId));
+
         
-       
+       List <Student> st = new ArrayList <Student>();
 
          for (int i=0; i<events.size();i++){
              
@@ -788,33 +788,17 @@ import java.util.*;
             }
          }
          
-       
-         List <Student> st = new ArrayList <Student>(list);
-        
+     
+       while (!list.isEmpty()) {
+         st.add(list.poll());
+    }
          
+      
         return st;
      
  } 
  }
  
- class Comp implements Comparator<Student>{
-             
-           
-            public int compare(Student s1, Student s2) {
-                
-                if(s1.getCpga() == s2.getCpga()){
-                    
-                  if(s1.getName().compareTo(s2.getName()) == 0){
-                     return s1.getId() - s2.getId();
-                 }
-                 else {
-                return s1.getName().compareTo(s2.getName());
-            }  
-           }   else {
-            return Double.compare(s2.getCpga(), s1.getCpga());
-        }
-    }
- }
 
 
 public class Solution {
