@@ -722,3 +722,122 @@ public class Solution {
       
     }
 }
+
+
+
+
+
+---------------------------------------------------------
+
+
+
+
+//Java Priority Queue
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.*;
+/*
+ * Create the Student and Priorities classes here.
+ */
+ 
+ class Student{
+     
+     int id;
+     String name;
+     double cgpa;
+     
+     Student (int id, String name, double cgpa){         
+         this.id = id;
+         this.name = name;
+         this.cgpa = cgpa;
+     }
+     
+     public int getId(){
+         return this.id;
+     }
+     
+     public String getName(){
+         return this.name;
+     }
+     
+     public double getCpga(){
+         return this.cgpa;
+     }
+ }
+ 
+ class Priorities{
+     
+     public List<Student> getStudents(List<String> events) {
+   
+           Comparator<Student> comparator = new Comp();
+           PriorityQueue<Student> list = new PriorityQueue<Student>(comparator);
+        
+       
+
+         for (int i=0; i<events.size();i++){
+             
+           String[] temp = events.get(i).split(" ");
+           
+            if (temp[0].equals("ENTER")) {
+                list.add(new Student(Integer.valueOf(temp[3]),temp[1], Double.valueOf(temp[2])));
+            }
+            
+             if (temp[0].equals("SERVED")) {
+                list.poll();
+            }
+         }
+         
+       
+         List <Student> st = new ArrayList <Student>(list);
+        
+         
+        return st;
+     
+ } 
+ }
+ 
+ class Comp implements Comparator<Student>{
+             
+           
+            public int compare(Student s1, Student s2) {
+                
+                if(s1.getCpga() == s2.getCpga()){
+                    
+                  if(s1.getName().compareTo(s2.getName()) == 0){
+                     return s1.getId() - s2.getId();
+                 }
+                 else {
+                return s1.getName().compareTo(s2.getName());
+            }  
+           }   else {
+            return Double.compare(s2.getCpga(), s1.getCpga());
+        }
+    }
+ }
+
+
+public class Solution {
+    private final static Scanner scan = new Scanner(System.in);
+    private final static Priorities priorities = new Priorities();
+    
+    public static void main(String[] args) {
+        int totalEvents = Integer.parseInt(scan.nextLine());    
+        List<String> events = new ArrayList<>();
+        
+        while (totalEvents-- != 0) {
+            String event = scan.nextLine();
+            events.add(event);
+        }
+        
+        List<Student> students = priorities.getStudents(events);
+        
+        if (students.isEmpty()) {
+            System.out.println("EMPTY");
+        } else {
+            for (Student st: students) {
+                System.out.println(st.getName());
+            }
+        }
+    }
+}
