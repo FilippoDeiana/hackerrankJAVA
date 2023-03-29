@@ -355,19 +355,19 @@ public class Solution {
  public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         int t = s.nextInt();
-        String [] pair_left = new String[t];
-        String [] pair_right = new String[t];
+        String [] left = new String[t];
+        String [] right = new String[t];
         
         for (int i = 0; i < t; i++) {
-            pair_left[i] = s.next();
-            pair_right[i] = s.next();
+            left[i] = s.next();
+            right[i] = s.next();
         }
 
   HashSet<String> result = new HashSet<String>();
 
             for (int j = 0; j < t; j++) {
                 
-                result.add(pair_left[j] + " " + pair_right[j]);
+                result.add(left[j] + " " + right[j]);
                 System.out.println(result.size());
         }
     
