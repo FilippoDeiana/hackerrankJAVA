@@ -277,7 +277,95 @@ class Singleton{
 ------------------------------
 
 
+ DA CHIEDERE
+ Output sballato
 
 
+// Java Reflection
+ import java.lang.reflect.*;
+    import java.util.*;
 
-//
+    class Student{
+        private String name;
+        private String id;
+        private String email;
+
+        public String getName() {
+            return name;
+        }
+        public String getId() {
+            return id;
+        }
+        public String getEmail() {
+            return email;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+        public void setId(String id) {
+            this.id = id;
+        }
+        public void setEmail(String email) {
+            this.email = email;
+        }
+    }
+
+    class Solution {
+
+        public static void main(String[] args){
+            
+            Class student = Student.class;
+            Method[] methods = student.getDeclaredMethods();
+
+            ArrayList<String> methodList = new ArrayList<>();
+            for(Method x : methods){
+                methodList.add(x.getName());
+            }
+            
+            Collections.sort(methodList);
+            
+            for(String name: methodList){
+                System.out.println(name);
+            }
+        }
+
+    }
+    
+    
+    
+    
+    
+    -------------------------------
+    
+    
+    
+    
+    DA CHIEDERE
+    
+    //Prime checker per l'input, per esempio doppio 2
+    
+    import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+      
+      Scanner sc = new Scanner(System.in);
+
+
+      String s = "";
+         
+      while(sc.hasNext()){
+          
+  int num = sc.nextInt();
+
+          if (num % 2 == 1 && num != 1|| num == 2){
+                  s += " " + num;
+                           System.out.println(s);
+
+          } 
+      }
+    } 
+}
+
