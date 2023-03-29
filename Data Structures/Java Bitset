@@ -1,0 +1,73 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+      
+      Scanner scan = new Scanner(System.in);
+      
+     
+      
+      int n = scan.nextInt();
+       BitSet b1= new BitSet(n);
+        BitSet b2= new BitSet(n);
+       
+      int m = scan.nextInt();
+      scan.nextLine();
+      
+      for (int i = 0; i<m;i++) {
+          
+          String check = scan.next();
+           int num = scan.nextInt();
+           int num1 = scan.nextInt();    
+           
+           
+           if (check.equals("AND")){
+               if(num == 1){
+                    b1.and(b2);
+               } else {
+                   b2.and(b1);
+               }
+           } else  if (check.equals("SET")){
+               if (num == 1){
+                      b1.set(num1);
+               } else {
+                     b2.set(num1);
+               }
+           }
+           else  if (check.equals("FLIP")){
+               if (num == 1){
+                    b1.flip(num1);
+               } else {
+                     b2.flip(num1);
+               }
+           }
+               else  if (check.equals("OR")){
+               if (num == 1){
+                    b1.or(b2);
+               } else {
+                    b2.or(b1);
+               }
+               }
+               else  if (check.equals("XOR")){
+               if (num == 1){
+                    b1.xor(b2);
+               } else {
+                    b2.xor(b1);
+               }
+           
+
+               }
+          
+         
+          
+        System.out.println(b1.cardinality() + " " + b2.cardinality());
+      }
+      
+      
+      
+      
+    }
+}
+
