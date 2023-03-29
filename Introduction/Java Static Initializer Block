@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    
+    static int H;
+    static int B;
+    static int sum;
+
+    public static void main(String[] args) {
+        
+        Scanner scan = new Scanner(System.in);
+        H = scan.nextInt();
+        B = scan.nextInt();
+        
+        try {
+            if (H <= 0 || B <= 0){
+             throw new Exception();
+             
+        } else {
+            sum = H * B;
+            System.out.println(sum);
+        }
+        
+        } catch (Exception e){
+            System.out.println("java.lang.Exception: Breadth and height must be positive");
+        }
+        
+        
+    }
+}
