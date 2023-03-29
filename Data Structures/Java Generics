@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Integer[] intArr = {1,2,3};
+        String[] stringArr = {"Hello", "World"};
+        
+        
+        printArray(intArr);
+        printArray(stringArr);
+    }
+    
+     public static <T> void printArray(T[] i) {
+        
+    for (T t : i) {
+        System.out.println(t);
+    }
+        
+    }
+}
