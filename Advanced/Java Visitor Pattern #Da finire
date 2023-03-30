@@ -1,12 +1,9 @@
-import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
 import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
 enum Color {
     RED, GREEN
@@ -17,6 +14,8 @@ abstract class Tree {
     private int value;
     private Color color;
     private int depth;
+    
+   
 
     public Tree(int value, Color color, int depth) {
         this.value = value;
@@ -51,7 +50,7 @@ abstract class TreeVis{
 class TreeNode extends Tree {
 
     private ArrayList<Tree> children = new ArrayList<>();
-
+ 
     public TreeNode(int value, Color color, int depth) {
         super(value, color, depth);
     }
@@ -140,19 +139,54 @@ class FancyVisitor extends TreeVis {
 }
 
 public class Solution {
-  
+   
     public static Tree solve() {
+        
+        
         //read the tree from STDIN and return its root as a return value of this function
+        List<Integer> nodes = new ArrayList<Integer>();
+        List<Color> colors = new ArrayList<Color>();
+        Map<Integer, Set<Integer>> edges = new HashMap<Integer, Set<Integer>>();
         
         Scanner sc = new Scanner(System.in);
+        
+        
         int length = sc.nextInt();
         
         for (int i = 0; i < length; i++) {
-            
+            nodes.add((Integer) sc.nextInt());
         }
         
-    }
+        for (int i = 0; i < length; i++) {
+            if (sc.nextInt() == 0)
+            colors.add(Color.RED);
+            else
+            colors.add(Color.GREEN);
 
+        }
+        
+        for (int i = 0; i < length; i++) {
+            int node1 = sc.nextInt();
+            int node2 = sc.nextInt();
+            
+            if (!edges.containsKey(node1)){
+                edges.put(node1, new HashSet<Integer>());
+                edges.get(node1).add(node2);
+            }
+            
+            if (!edges.containsKey(node2)){
+                edges.put(node2, new HashSet<Integer>());
+                edges.get(node2).add(node1);
+            }
+        
+        } 
+        
+        TreeVis tree = new TreeNode(nodes.get(0), colors.get(0), edges.get(0);
+
+        return tree;
+    }
+    
+   
 
     public static void main(String[] args) {
           Tree root = solve();
