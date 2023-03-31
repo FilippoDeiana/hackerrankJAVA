@@ -1,0 +1,32 @@
+import java.io.*;
+import java.math.BigInteger;
+import java.util.*;
+
+
+class Prime {
+    public static boolean checkPrime(int... n) {
+        BigInteger big = new BigInteger(String.valueOf(n[0]));
+        return big.isProbablePrime(100);
+    }
+}
+
+class Solution {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        String s = "";
+      
+        while (sc.hasNext()) {
+            int num = sc.nextInt();
+            
+           if (Prime.checkPrime(num)){
+                  s += " " + num; 
+                  System.out.println(s);
+           }
+
+            
+
+        }     
+    }
+}
